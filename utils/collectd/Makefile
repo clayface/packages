@@ -180,6 +180,7 @@ COLLECTD_PLUGINS_SELECTED:= \
 	olsrd \
 	openvpn \
 	ping \
+	poe \
 	postgresql \
 	powerdns \
 	processes \
@@ -499,6 +500,7 @@ $(eval $(call BuildPlugin,nut,UPS monitoring input,nut,+PACKAGE_collectd-mod-nut
 $(eval $(call BuildPlugin,olsrd,OLSRd status input,olsrd,))
 $(eval $(call BuildPlugin,openvpn,OpenVPN traffic/compression input,openvpn,))
 $(eval $(call BuildPlugin,ping,ping status input,ping,+PACKAGE_collectd-mod-ping:liboping))
+$(eval $(call BuildPlugin,poe,PoE power output,poe,))
 $(eval $(call BuildPlugin,postgresql,PostgreSQL status input,postgresql,+PACKAGE_collectd-mod-postgresql:libpq))
 $(eval $(call BuildPlugin,powerdns,PowerDNS server status input,powerdns,))
 $(eval $(call BuildPlugin,processes,process status input,processes,+PACKAGE_collectd-mod-processes:libmnl))
