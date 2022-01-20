@@ -146,7 +146,7 @@ transmission() {
 	procd_set_param stderr 1
 	procd_set_param respawn
 
-	seccomp_path="/etc/seccomp/transmission-daemon.json"
+	#seccomp_path="/etc/seccomp/transmission-daemon.json"
 	if [ -f "$seccomp_path" ]; then
 		procd_set_param seccomp "$seccomp_path"
 	fi
@@ -162,11 +162,7 @@ transmission() {
 	[ "$ca_bundle" -gt 0 ] && procd_append_param env CURL_CA_BUNDLE="$ca_bundle_file"
 
 	procd_add_jail transmission log
-	procd_add_jail_mount "$config_file"
-	procd_add_jail_mount_rw "$config_dir/resume"
-	procd_add_jail_mount_rw "$config_dir/torrents"
-	procd_add_jail_mount_rw "$config_dir/blocklists"
-	procd_add_jail_mount_rw "$config_dir/stats.json"
+	procd_add_jail_mount_rw "$config_dir"
 	procd_add_jail_mount_rw "$download_dir"
 	[ "$incomplete_dir_enabled" = "1" ] && procd_add_jail_mount_rw "$incomplete_dir"
 	[ "$watch_dir_enabled" = "1" ] && procd_add_jail_mount_rw "$watch_dir"
